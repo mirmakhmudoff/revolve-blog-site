@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+    <div class="row">
+        <!-- Blog posts loop start -->
+        {% for post in posts %}
+            <div class="col-lg-4 col-md-6 mb-5">
+                <article class="post-grid">
+                    <a class="post-thumb mb-4 d-block" href="{{ post.get_absolute_url }}">
+                        {% if post.images.exists %}
+                            <img src="{{ post.images.first.image.url }}" alt="{{ post.title }}" class="img-fluid w-100">
+                        {% endif %}
+                    </a>
+                    <div class="post-content-grid">
+                        <div class="label-date">
+                            <span class="day">{{ post.publish|date:"d" }}</span>
+                            <span class="month text-uppercase">{{ post.publish|date:"M" }}</span>
+                        </div>
+                        <span class="cat-name text-color font-extra font-sm text-uppercase letter-spacing">
+                            {{ post.category.first.name }}
+                        </span>
+                        <h3 class="post-title mt-1">
+                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                        </h3>
+                        <div>
+                            {{ post.body|safe }}
+                        </div>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination pt-4 mb-5 justify-content-center">
+        <ul class="list-inline">
+            {% if posts.has_previous %}
+                <li class="list-inline-item"><a href="?page={{ posts.previous_page_number }}">&larr;</a></li>
+            {% endif %}
+            {% for i in posts.paginator.page_range %}
+                {% if posts.number == i %}
+                    <li class="list-inline-item active"><a href="#">{{ i }}</a></li>
+                {% else %}
+                    <li class="list-inline-item"><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if posts.has_next %}
+                <li class="list-inline-item"><a href="?page={{ posts.next_page_number }}">&rarr;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

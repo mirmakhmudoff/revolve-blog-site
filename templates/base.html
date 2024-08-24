@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Revolve - Personal Magazine Blog Template</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+	<!-- THEME CSS -->
+	<link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/themify/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick-theme.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/owl-carousel/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/owl-carousel/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/magnific-popup/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+	<header class="header-top bg-grey justify-content-center py-2 d-lg-none">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg navigation-2 navigation">
+				<a class="navbar-brand" href="/">
+					<img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+					aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="ti-menu"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul id="menu" class="menu navbar-nav mx-auto">
+						<li class="nav-item"><a href="/">Home</a></li>
+						<li class="nav-item"><a href="/blog-posts">Blog Posts</a></li>
+						<li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+						<li class="nav-item"><a href="/category-posts" class="nav-link">Category</a></li>
+						<li class="nav-item"><a href="/all-posts">Posts</a></li>
+						<li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+					</ul>
+
+					<ul class="list-inline mb-0 d-block d-lg-none">
+						<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div class="section-padding pb-0">
+		<div class="sidebar d-none d-lg-block">
+			<div class="sidebar-sticky">
+				<div class="logo-wrapper">
+					<a class="navbar-brand" href="/">
+						<img src="{% static 'images/logo.png' %}" alt="" class="img-fluid">
+					</a>
+				</div>
+				<div class="main-menu">
+					<nav class="navbar navbar-expand-lg p-0">
+						<div class="navbar-collapse collapse" id="navbarsExample09">
+							<ul class="list-unstyled">
+								<li class="nav-item">
+									<a class="nav-link" href="/">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/blog-posts">Blog Posts</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/about">About</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/category-posts">Category</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/all-posts">Posts</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/contact">Contact</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+				<div class="header-social-wrapper">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			{% block content %}
+			<!-- Dynamic content will go here -->
+			{% endblock content %}
+		</div>
+	</div>
+
+	<div class="footer-home bg-grey py-4">
+		<div class="row">
+			<div class="col-lg-6 text-center text-lg-left">
+				© 2019 copyright Themes Themefisher
+			</div>
+			<div class="col-lg-6">
+				<ul class="list-inline text-center mb-0 text-lg-right">
+					<li class="list-inline-item"><a href="#">Privacy policy</a></li>
+					<li class="list-inline-item"><a href="#">Support</a></li>
+					<li class="list-inline-item"><a href="#">About</a></li>
+					<li class="list-inline-item"><a href="#">Contact</a></li>
+					<li class="list-inline-item"><a href="#">Terms</a></li>
+					<li class="list-inline-item"><a href="#">Category</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- THEME JAVASCRIPT FILES -->
+	<script src="{% static 'plugins/jquery/jquery.js' %}"></script>
+	<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'plugins/bootstrap/js/popper.min.js' %}"></script>
+	<script src="{% static 'plugins/owl-carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'plugins/slick-carousel/slick.min.js' %}"></script>
+	<script src="{% static 'plugins/magnific-popup/magnific-popup.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>

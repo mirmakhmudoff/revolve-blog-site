@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load blog_tags %}
+
+<div class="breadcrumb-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="text-center">
+                   <h2 class="lg-title">Blog Posts</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    {% for post in posts %}
+                        <div class="col-lg-6 col-md-6">
+                            <article class="post-grid mb-5">
+                                <div class="post-thumb mb-4">
+                                    <img src="{{ post.images.first.image.url }}" alt="" class="img-fluid w-100">
+                                </div>
+                                <span class="cat-name text-color font-extra text-sm text-uppercase letter-spacing-1">{{ category.name }}</span>
+                                <h3 class="post-title mt-1"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                                <span class=" text-muted  text-capitalize">{{ post.publish|date:"F d, Y" }}</span>
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="pagination mt-5 pt-4">
+                    <ul class="list-inline">
+                        {% if posts.has_previous %}
+                            <li class="list-inline-item"><a href="?page={{ posts.previous_page_number }}" class="prev-posts"><i class="ti-arrow-left"></i></a></li>
+                        {% endif %}
+                        {% for page_num in posts.paginator.page_range %}
+                            <li class="list-inline-item"><a href="?page={{ page_num }}" class="{% if posts.number == page_num %}active{% endif %}">{{ page_num }}</a></li>
+                        {% endfor %}
+                        {% if posts.has_next %}
+                            <li class="list-inline-item"><a href="?page={{ posts.next_page_number }}" class="prev-posts"><i class="ti-arrow-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="sidebar sidebar-right">
+                    <div class="sidebar-wrap mt-5 mt-lg-0">
+                        <div class="sidebar-widget about mb-5 text-center p-3">
+                            <div class="about-author">
+                                <img src="{% static 'images/author.jpg' %}" alt="" class="img-fluid">
+                            </div>
+                            <h4 class="mb-0 mt-4">{{ user.username }}</h4>
+                            <p>Travel Blogger</p>
+                            <p>I'm {{ user.username }}, last year I decided to quit my job and travel the world. You can follow my journey on this blog!</p>
+                            <img src="{% static 'images/liammason.png' %}" alt="" class="img-fluid">
+                        </div>
+
+                        <div class="sidebar-widget follow mb-5 text-center">
+                            <h4 class="text-center widget-title">Follow Me</h4>
+                            <div class="follow-socials">
+                                <a href="#"><i class="ti-facebook"></i></a>
+                                <a href="#" ><i class="ti-twitter"></i></a>
+                                <a href="#" ><i class="ti-instagram"></i></a>
+                                <a href="#"><i class="ti-youtube"></i></a>
+                                <a href="#"><i class="ti-pinterest"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget mb-5">
+                            <h4 class="text-center widget-title">Trending Posts</h4>
+                            {% for trending_post in trending_posts %}
+                                <div class="sidebar-post-item-big">
+                                    <a href="{{ trending_post.get_absolute_url }}"><img src="{{ trending_post.images.first.image.url }}" alt="" class="img-fluid"></a>
+                                    <div class="mt-3 media-body">
+                                        <span class="text-muted letter-spacing text-uppercase font-sm">{{ trending_post.publish|date:"F d, Y" }}</span>
+                                        <h4><a href="{{ trending_post.get_absolute_url }}">{{ trending_post.title }}</a></h4>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="sidebar-widget category mb-5">
+                            <h4 class="text-center widget-title">Categories</h4>
+                            <ul class="list-unstyled">
+                                {% for category in categories %}
+                                    <li class="align-items-center d-flex justify-content-between">
+                                        <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                                        <span>{{ category.post_count }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-widget subscribe mb-5">
+                            <h4 class="text-center widget-title">Newsletter</h4>
+                            <input type="text" class="form-control" placeholder="Email Address">
+                            <a href="#" class="btn btn-primary d-block mt-3">Sign Up</a>
+                        </div>
+
+                        <div class="sidebar-widget sidebar-adv mb-5">
+                            <a href="#"><img src="{% static 'images/sidebar-banner3.png' %}" alt="" class="img-fluid w-100"></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
